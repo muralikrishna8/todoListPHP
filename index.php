@@ -1,6 +1,6 @@
 <html xmlns="http://www.w3.org/1999/html">
 <head>
-<title>Todo List</title>
+    <title>Todo List</title>
 </head>
 <body>
 	<div> Welcome to TODO </div>
@@ -25,6 +25,7 @@
                     <td>$task_number</td>
                     <td>$task</td>
                     <td>$date</td>
+                    <td class="delete" task="$task_number">X</td>
                 </tr>
 END;
 
@@ -38,5 +39,16 @@ END;
         <input type="text" name="task" size="50"/>
         <input type="submit" />
     </form>
+    <script src="jquery.js"></script>
+    <script>
+        $(".delete").click(function() {
+            var $task = $(this);
+            var taskId = $task.attr("task");
+
+            $.post("deleteToDo.php", { "task_id": taskId }, function() {
+                $task.parent().remove();
+            });
+        });
+    </script>
 </body>
 </html>
