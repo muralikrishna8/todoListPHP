@@ -32,5 +32,11 @@ END;
     ?>
         </tbody>
     </table>
+    <br />
+    <br />
+    <form action="addToDo.php" method="post">
+        <input type="text" name="task" size="50"/>
+        <input type="submit" />
+    </form>
 </body>
 </html>
